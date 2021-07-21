@@ -7,6 +7,7 @@ Steps to run app:
   a. npm i
 	b. ng build tvmaze	
 3. cd into main project directory and run command: ng serve
+4. Open http://localhost:4200 in the browser.
 
 -----------------------------------------------------------
 
