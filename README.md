@@ -1,5 +1,11 @@
 # LibDemo
 
+Featuring:-
+1. Library in action used in Re-usability of code (both UI and functions),
+2. Inheriting components to re-use their properties,
+3. Dynamic routing using Ng-factory, module-initializers and adding routing from api call of master route configs,
+4. Dynamic UI made using Content-Projections
+
 Steps to run app:
 
 1. npm i
