@@ -5,11 +5,10 @@ import { PagetwoComponent } from './pagetwo/pagetwo.component';
 import { PagethreeComponent } from './pagethree/pagethree.component';
 
 const routes: Routes = [
-  { path: '', component: PageoneComponent },
   { path: 'pageone', component: PageoneComponent },
   { path: 'pagetwo', component: PagetwoComponent },
   { path: 'pagethree', component: PagethreeComponent },
-  { path: "**", redirectTo: "", pathMatch: "full" }
+  { path: "**", redirectTo: "pageone", pathMatch: "full" }
 ];
 
 @NgModule({

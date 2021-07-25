@@ -1,6 +1,7 @@
 import { Component, NgModule, Compiler, OnInit } from '@angular/core';
 import { BaseComponent } from 'tvmaze';
 import { RouterModule, Router } from '@angular/router';
+import { RouteLoaderService } from '../services/route-loader.service'
 
 @Component({
   selector: 'ld-pageone',
@@ -9,7 +10,7 @@ import { RouterModule, Router } from '@angular/router';
 })
 export class PageoneComponent extends BaseComponent implements OnInit {
 
-  constructor(public router: Router, private compiler: Compiler) {
+  constructor(public router: Router, private compiler: Compiler, public routeService: RouteLoaderService) {
     super(router);
   }
 
@@ -17,30 +18,31 @@ export class PageoneComponent extends BaseComponent implements OnInit {
   }
 
   createDynamic(){
-    const template = '<span>generated on the fly</span>';
+    // const template = '<span>generated on the fly</span>';
     // const tmpCmp = Component({template: template})(class {});
 
-    const routes = [{path: '', component: BaseComponent}];
-    const tmpModule = NgModule({
-      imports: [RouterModule.forChild(routes)],
-      declarations: [BaseComponent]})(class {});
+    // ------Code for adding module dynamically-----------------
+    // const routes = [{path: '', component: BaseComponent}];
+    // const tmpModule = NgModule({
+    //   imports: [RouterModule.forChild(routes)],
+    //   declarations: [BaseComponent]})(class {});
     
-    this.compiler.compileModuleAsync(tmpModule).then((module) => {
+    // this.compiler.compileModuleAsync(tmpModule).then((module) => {
 
-      const appRoutes = [...this.router.config];
+
+    //   const route = {
+    //     path: 'dynamic',
+    //     loadChildren() { return module }
+    //   };
+      // this.router.navigateByUrl('/dynamic');
+    // });
+    // --------------------------------------------------------
 
       const route = {
         path: 'dynamic',
-        loadChildren() { return module }
+        component: BaseComponent
       };
-      console.log("appRoutes",appRoutes);
 
-      appRoutes.unshift(route);
-
-      console.log("appRoutes",appRoutes);
-
-      this.router.resetConfig(appRoutes);
-      // this.router.navigateByUrl('/dynamic');
-    });
+      this.routeService.createRoutes(route);
   }
 }
