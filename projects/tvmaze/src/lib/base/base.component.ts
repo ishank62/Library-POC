@@ -10,6 +10,7 @@ import { ZippyContentDirective } from '../zippy-content.directive';
 export class BaseComponent implements OnInit {
   baseItems: Array<any> = []
   expanded: boolean = true;
+  dynamic = false;
   // apiName: string;
   @ContentChild(ZippyContentDirective) content!: ZippyContentDirective;
 
@@ -20,6 +21,8 @@ export class BaseComponent implements OnInit {
       // this.apiService[apiName].subscribe(res=>{
       //     this.baseItems = res.data
       // })
+      if(this.router.url === '/dynamic')
+        this.dynamic = true;
   }
 
   openPage(routename: string) {
