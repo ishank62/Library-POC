@@ -1,5 +1,16 @@
 # LibDemo
 
+Steps to run app:
+
+1. npm i
+2. cd into library and run command:	
+  a. npm i
+	b. ng build tvmaze	
+3. cd into main project directory and run command: ng serve
+4. Open http://localhost:4200 in the browser.
+
+-----------------------------------------------------------
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
 
 ## Development server
